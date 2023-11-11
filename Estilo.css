@@ -12,18 +12,26 @@ h1{
     background-clip: text;
     color: transparent; 
     font-size: 40px;
-    animation: blink 9s infinite;
 }
 
-@keyframes blink {
+.puffIn {
+    animation-name: puffIn;
+    animation-duration: 10s; /* Duración de la animación en segundos */
+    /* Agrega otras propiedades de animación si es necesario */
+}
+
+@keyframes puffIn {
     0% {
-        opacity: 1;
-    }
-    50% {
         opacity: 0;
+        transform-origin: 50% 50%;
+        transform: scale(2, 2);
+        filter: blur(2px);
     }
     100% {
         opacity: 1;
+        transform-origin: 50% 50%;
+        transform: scale(1, 1);
+        filter: blur(0px);
     }
 }
 
@@ -120,6 +128,19 @@ h1{
 .btn.btn-outline-success:hover {
     background-color: #551875; 
     color: #64a4b4; 
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.navbar-dark.slide-in {
+    animation: slideInFromTop 0.8s ease-out;
 }
 
 
@@ -319,4 +340,60 @@ footer {
     text-align: center;
     padding: 20px;
     height: 60px;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both; /* Asegura que el elemento mantiene el estado final de la animación */
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .navbar {
+        margin-top: 10px;
+    }
+
+    .navbar-dark .navbar-nav {
+        margin-left: 0;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        font-size: 20px;
+        margin-top: 5px;
+        padding: 10px 15px;
+    }
+
+    .gallery-images img {
+        width: 100%;
+    }
+
+    .go-back {
+        font-size: 16px; /* Ajustar el tamaño del texto del enlace "Go Back" en dispositivos móviles */
+        padding: 8px 15px; /* Ajustar el espacio alrededor del enlace en dispositivos móviles */
+        position: static; /* Cambiar la posición a estática en dispositivos móviles */
+    }
+
+    #contact form button {
+        margin-top: 10px; /* Agregar espacio entre el botón y el formulario en dispositivos móviles */
+    }
 }
