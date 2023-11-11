@@ -383,6 +383,16 @@ footer {
         padding: 10px 15px;
     }
 
+    .video-container {
+        width: 50%;
+        padding-bottom: 56.25%; /* Proporción de aspecto 16:9 (9/16 * 100) */
+    }
+
+    .video-container iframe {
+        width: 50%;
+        height: 50%;
+    }
+
     .gallery-images img {
         width: 100%;
     }
