@@ -1,8 +1,58 @@
+#confirm-overlay {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+}
+    
+#confirm-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    z-index: 9999;
+}
+
+#confirm-box label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#confirm-button {
+    background-color: #695872;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#confirm-button:hover {
+    background-color: #452f5f;
+}
+
+.page-content {
+    pointer-events: none; 
+}
+
 body {
     font-family: "Lekton", sans-serif;
     margin: 10px;
     padding: 10px;
     background-image: url(Imágenes/920763.jpg);
+    overflow: hidden;
     
 }
 
@@ -16,8 +66,7 @@ h1{
 
 .puffIn {
     animation-name: puffIn;
-    animation-duration: 10s; /* Duración de la animación en segundos */
-    /* Agrega otras propiedades de animación si es necesario */
+    animation-duration: 10s;
 }
 
 @keyframes puffIn {
@@ -143,33 +192,6 @@ h1{
     animation: slideInFromTop 0.8s ease-out;
 }
 
-/* Estilos generales */
-.navbar-menu {
-    display: none;
-}
-
-#navbar-toggle:checked + .navbar-menu {
-    display: block;
-}
-
-.navbar-menu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.navbar-menu li {
-    text-align: center;
-    margin: 10px 0;
-}
-
-.navbar-menu a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    font-size: 18px;
-}
-
 
 #About {
     margin-top: 20px;
@@ -256,14 +278,22 @@ article img:hover {
 }
 
 .gallery-images {
-    margin-left: 0; 
-    margin-right: 0; 
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height:auto;
+    position:relative;
+    display:inline-block;
+    vertical-align:top;
+    overflow:hidden;
 }
 
 .gallery-images img {
-    max-width: 100%;
-    height: auto;
-    
+    width:100%;
+    height:auto;
+    position:relative;
+    display:inline;
+    margin-bottom: 10px;
 }
 
 .gallery article {
@@ -384,10 +414,27 @@ footer {
     animation-name: fadeIn;
     animation-duration: 5s;
     animation-timing-function: ease-out;
-    animation-fill-mode: both; /* Asegura que el elemento mantiene el estado final de la animación */
+    animation-fill-mode: both; 
+}
+
+.highlighted {
+    background-color: rgb(124, 81, 133);
+    font-weight: bold;
+}
+
+@media screen and (min-width: 767px) { 
+    .navbar-toggler {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 767px) {
+    
+    *{
+        margin: 0;
+        padding: 0;
+      }
+
     body {
         font-size: 14px;
     }
@@ -396,60 +443,88 @@ footer {
         font-size: 30px;
     }
 
-    .navbar {
-        margin-top: 10px;
-    }
+}
 
-    .navbar-dark .navbar-nav {
-        margin-left: 0;
-    }
-
-    .navbar-dark .navbar-nav .nav-link {
-        font-size: 20px;
-        margin-top: 5px;
+    /* Estilos para el menú desplegable en celular, pero el menú hamburguesa no se me abre. */
+    .navbar-toggler {
+        background-color: #8e6aa1;
+        border: none;
         padding: 10px 15px;
+        font-size: 18px;
+        color: #fff;
+        position: absolute;
+        margin-top: 20px;
+        cursor: pointer;
     }
 
-    .navbar-menu {
-        display: none;
-    }
+    .navbar {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
 
-    #navbar-toggle:checked + .navbar-menu {
-        display: block;
-        background-color: #695872;
+    .navbar-nav {
         text-align: center;
-        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 1%;
+        height: 130%;
+        align-items: center;
+        height: auto;
+        margin-right: 10px;
+        padding-right: 10px;    
+        }
+
+    .navbar-nav .nav-item {
+        margin: 5px 0;
+        text-decoration: none;
+        position: relative;
+        
     }
 
-    #navbar-toggle:checked + .navbar-menu ul {
-        padding: 10px;
+    .navbar-nav .nav-link {
+        color: #8c6191;
+        font-size: 16px;
+        transition: color 0.3s;
+        
     }
 
-    #navbar-toggle:checked + .navbar-menu li {
-        margin: 10px 0;
+    .navbar-nav .nav-link:hover {
+        color: #452f5f;
+    }
+
+    .navbar-brand img {
+        width: 50px;
+        height: auto;
+    }
+
+    .navbar-toggler-icon {
+        background-color: rgb(136, 85, 143);
     }
 
     .video-container {
-        width: 50%;
-        padding-bottom: 56.25%; /* Proporción de aspecto 16:9 (9/16 * 100) */
+        max-width: 100%;
+        overflow: hidden;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh; 
     }
 
     .video-container iframe {
-        width: 50%;
-        height: 50%;
+        max-width: 100%;
+        height: auto;
     }
 
     .gallery-images img {
         width: 100%;
     }
 
-    .go-back {
-        font-size: 16px; /* Ajustar el tamaño del texto del enlace "Go Back" en dispositivos móviles */
-        padding: 8px 15px; /* Ajustar el espacio alrededor del enlace en dispositivos móviles */
-        position: static; /* Cambiar la posición a estática en dispositivos móviles */
+    #contact form button {
+        margin-top: 10px; 
     }
 
-    #contact form button {
-        margin-top: 10px; /* Agregar espacio entre el botón y el formulario en dispositivos móviles */
-    }
-}
+   
+

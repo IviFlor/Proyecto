@@ -7,8 +7,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./Estilo.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aldrich&family=Lekton">
+    <script src="search.js"></script>
 </head>
 <body>
+    
+        <div id="confirm-box">
+        <h2>¿Te gusta el arte con IA?</h2>
+        <label>
+            <input type="radio" name="response" value="yes"> Sí
+        </label>
+        <label>
+            <input type="radio" name="response" value="no"> No
+        </label>
+        <button id="confirm-button">Confirmar</button>
+            </div>
 
         <section id="inicio">
             <h1 class="puffIn">My MidJourney Gallery</h1>
@@ -19,6 +31,10 @@
         <nav class="navbar navbar-expand-lg navbar-dark slide-in" style="background-color: #695872;">
             <a class="navbar-brand" href="#inicio">
             <img src="Imágenes/Midjourney-icon.jpg" alt="MidJourney">
+
+            <button class="navbar-toggler" type="button" id="navbar-toggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -33,12 +49,12 @@
                     </li>
                   </ul>
             </div>
-            <div class="container-fluid">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+
+            <form id="searchForm">
+                <input type="text" id="searchInput" name="searchInput">
+                <button type="button" onclick="buscar()">Buscar</button>
+            </form>
+
             
           </nav>
           
@@ -52,7 +68,7 @@
             <p>La Inteligencia Artificial de MidJourney se especializa en tomar un texto que es introducido por el usuario y crear una imagen a partir de este. A este procedimiento se le conoce como <strong>Text to image</strong> y es algo muy popular actualmente.</p>
             <p>En principio, MidJourney es un bot que te permite generar imágenes con IA de forma gratuita y a través del servidor de Discord. Sin embargo, tienes un límite en esta versión, ya que solo podrás pedirle que cree hasta 25 imágenes con sus variaciones. Pero si necesitas muchas más, entonces tendrás que pagar una suscripción de unos 10 dólares al mes, lo que te brinda acceso a un catálogo de 200 imágenes.</p>
             <p>Para más información, <strong> te enseño un vídeo de como utilizar la IA:</strong></p>
-            <iframe width="500" height="300" src="https://www.youtube.com/embed/lS-opyizAM0?si=fqAxHUGSbCCVZqlM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="400" height="200" src="https://www.youtube.com/embed/lS-opyizAM0?si=fqAxHUGSbCCVZqlM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <p>En esta ocasión verán una selección de imágenes que pedí creara. <br> <strong>¡Son increíbles!</strong></p>
             </article>
         </section>
@@ -158,5 +174,6 @@
         <footer>
             <p><strong> @ 2023 My MidJourney Gallery </strong></p>
         </footer>
+        <script src="search.js"></script>
 </body>
 </html>
